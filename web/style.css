@@ -1,17 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap");
 
 :root {
-  --color-default: #cfd2da;
-  --color-hover: white;
+  --color-default: #d7e0ef;
+  --color-hover: #f5f7fb;
+  --color-muted: #95a2b8;
+  --color-line: rgba(255, 255, 255, 0.14);
+  --color-panel: rgba(10, 15, 24, 0.62);
+  --color-panel-soft: rgba(10, 15, 24, 0.46);
+  --color-accent: #7df9c1;
+  --color-warn: #ffd166;
+  --color-shadow: 0 0.9rem 2rem rgba(0, 0, 0, 0.28);
 }
 
 body {
   visibility: hidden;
-  user-select: none;
-  white-space: nowrap;
   margin: 0;
   user-select: none;
   overflow: hidden;
+  white-space: nowrap;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 p {
@@ -27,65 +34,104 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 22pt;
-  fill: black;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 45%),
+    rgba(10, 15, 24, 0.28);
+  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+#eye::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at top left, rgba(125, 249, 193, 0.1), transparent 42%),
+    radial-gradient(circle at bottom right, rgba(255, 209, 102, 0.08), transparent 38%);
+  opacity: 0.7;
+}
+
+#eyeSvg {
+  position: relative;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: var(--color-default);
+  transition: fill 180ms ease, transform 180ms ease, filter 180ms ease;
 }
 
 .eye-hover {
-  fill: var(--color-default);
+  fill: var(--color-hover);
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 0.7rem rgba(125, 249, 193, 0.26));
 }
 
 #options-wrapper {
   position: absolute;
-  top: calc(48.4%);
-  left: calc(50% + 18pt);
+  top: calc(50% - 0.95rem);
+  left: calc(50% + 2rem);
+  display: grid;
+  gap: 0.4rem;
 }
 
 .option-container {
+  position: relative;
   color: var(--color-default);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-family: "Nunito";
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 20, 0.7) 0%,
-    rgba(20, 20, 20, 0.6) 66%,
-    rgba(47, 48, 53, 0) 100%
-  );
-  font-size: 11pt;
-  line-height: 22pt;
-  vertical-align: middle;
-  margin: 2pt;
-  transition: 300ms;
-  transform-origin: left top;
-  scale: 1;
-  height: 22pt;
-  width: 150pt;
-  top: 0;
+  gap: 0.55rem;
+  min-height: 2.2rem;
+  min-width: 12.75rem;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.82rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 45%),
+    var(--color-panel-soft);
+  box-shadow: 0 0.45rem 1.1rem rgba(0, 0, 0, 0.22);
+  font-size: 0.82rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+  transform-origin: left center;
+  transform: translateX(0);
 }
 
 .option-container:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.7) 0%,
-    rgba(30, 30, 30, 0.6) 66%,
-    rgba(57, 58, 63, 0) 100%
-  );
-  transform-origin: left top;
   color: var(--color-hover);
-  margin-left: 4pt;
+  border-color: rgba(125, 249, 193, 0.45);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 45%),
+    rgba(18, 27, 40, 0.72);
+  box-shadow: 0 0.9rem 1.8rem rgba(0, 0, 0, 0.28);
+  transform: translateX(0.2rem);
 }
 
 .option-icon {
-  font-size: 12pt;
-  line-height: 22pt;
-  width: 14pt;
-  margin: 5pt;
+  position: relative;
+  z-index: 1;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.68rem;
   color: var(--color-default);
 }
 
 .option-label {
-  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
 }
